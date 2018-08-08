@@ -1,0 +1,9 @@
+---
+- name: Check system:admin role
+  shell: oc whoami
+  tags: check-role 
+
+- name: Check nodes
+  shell: oc get nodes
+  tags: check-nodes
+

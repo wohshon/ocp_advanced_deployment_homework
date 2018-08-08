@@ -22,3 +22,15 @@
 - name: install pre-req
   import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml"
 
+- name: install ansible
+  import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml"
+
+- name: Post Install Verification
+  hosts: localhost
+  roles:
+    - post-install-verify
+
+- name: Post Install Configuration
+  hosts: nfs
+  roles:
+    - post-install-configure
