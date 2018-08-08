@@ -1,0 +1,8 @@
+---
+- name: All GUID env variable
+  shell: export GUID=`hostname | cut -d"." -f2`; echo "export GUID=$GUID" >> $HOME/.bashrc
+  tags: set-guid 
+ 
+- name: Verify Installation and Configuration of Docker
+  shell: systemctl restart docker
+  tags: verify-docker 
