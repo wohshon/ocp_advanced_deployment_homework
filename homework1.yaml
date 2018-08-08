@@ -15,12 +15,8 @@
 - name: install ansible
   import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml"
 
-- name: Post Install Verification
-  hosts: localhost
+- name: Post Install
+  hosts: all
   roles:
-    - post-install-verify
+    - post-install
 
-- name: Post Install Configuration
-  hosts: nfs
-  roles:
-    - post-install-config

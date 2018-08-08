@@ -1,0 +1,26 @@
+---
+- name: Check system:admin role
+  shell: oc whoami
+  when: "inventory_hostname == 'localhost'"
+  tags: check-role 
+
+- name: Check nodes
+  shell: oc get nodes
+  when: "inventory_hostname == 'localhost'"
+  tags: check-nodes
+
+- name: create pv directories
+  file:
+    dest: "/srv/nfs/user-vols/pv{{ item }}"
+    state: directory
+    group: nfsnobody
+    owner: nfsnobody
+    mode: 0777
+  with_sequence: start=1 end=50
+  when: "'nfs' in group_names"
+
+- name: configure exports
+  shell: echo /srv/nfs/user-vols/pv{{ item }} >> /etc/exports.d/openshift-uservols.exports
+  with_sequence: start=1 end=50
+  when: "'nfs' in group_names"
+
