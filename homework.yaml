@@ -9,3 +9,8 @@
   roles:
     - prep-env
   tags: verify-docker  
+
+  hosts: nfs
+  roles:
+    - prep-env
+  tags: verify-nfs
