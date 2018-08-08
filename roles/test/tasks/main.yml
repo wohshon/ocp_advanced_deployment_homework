@@ -1,0 +1,25 @@
+---
+- name: create dir for pv files
+  file:
+    dest: ./pvs
+    state: directory
+  when: "inventory_hostname == 'localhost'"
+    
+- name: Create pv yaml - RWO
+  vars:
+    volsize: '5Gi'
+    volume: 'pv{{ item }}'
+    mode: 'ReadWriteOnce'
+  template: src=pv.j2 dest=./pvs/{{ volume }}
+  with_sequence: start=1 end=25
+  when: "inventory_hostname == 'localhost'"
+
+- name: Create pv yaml - RWX
+  vars:
+    volsize: '10Gi'
+    volume: 'pv{{ item }}'
+    mode: 'ReadWriteMany'
+  template: src=pv.j2 dest=./pvs/{{ volume }}
+  with_sequence: start=26 end=50
+  when: "inventory_hostname == 'localhost'"
+
