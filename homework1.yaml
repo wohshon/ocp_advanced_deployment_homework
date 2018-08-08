@@ -7,17 +7,7 @@
 - name: Prepare Environment Play
   hosts: all
   roles:
-    - common-prep
-
-- name: Verify Docker on nodes
-  hosts: nodes
-  roles:
-    - docker-prep
-
-- name: Verify NFS
-  hosts: nfs
-  roles:
-    - nfs-prep
+    - prep-env
 
 - name: install pre-req
   import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml"
