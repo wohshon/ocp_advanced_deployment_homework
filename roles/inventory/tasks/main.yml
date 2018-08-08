@@ -5,4 +5,3 @@
 
 - name: refresh
   meta: refresh_inventory
-  template: src=hosts.j2 dest=/root/hosts
