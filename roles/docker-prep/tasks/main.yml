@@ -1,0 +1,12 @@
+---
+
+- name: Verify Docker installation
+  yum: 
+    name: docker
+    state: present
+  tags: verify-docker
+ 
+- name: Configuration of Docker
+  shell: systemctl restart docker
+  tags: verify-docker 
+

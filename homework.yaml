@@ -2,15 +2,14 @@
 - name: Prepare Environment Play
   hosts: all
   roles:
-    - prep-env
-  tags: set-guid
+    - common-prep
 
+- name: Verify Docker on nodes
   hosts: nodes
   roles:
-    - prep-env
-  tags: verify-docker  
+    - docker-prep
 
+- name: Verify NFS
   hosts: nfs
   roles:
-    - prep-env
-  tags: verify-nfs
+    - nfs-prep
