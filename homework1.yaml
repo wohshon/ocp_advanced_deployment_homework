@@ -16,7 +16,7 @@
   import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml"
 
 - name: Post Install
-  hosts: all
+  hosts: all,localhost
   roles:
     - post-install
 
