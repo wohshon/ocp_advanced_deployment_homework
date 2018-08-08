@@ -1,4 +1,8 @@
 ---
 # This role setsup the host file 
 - name: Creates the hosts file
+  template: src=hosts.j2 dest=/etc/ansible/hosts
+
+- name: refresh
+  meta: refresh_inventory
   template: src=hosts.j2 dest=/root/hosts

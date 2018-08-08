@@ -1,4 +1,9 @@
 ---
+- name: Set GUID in host file
+  hosts: localhost
+  roles:
+    - inventory
+
 - name: Prepare Environment Play
   hosts: all
   roles:
