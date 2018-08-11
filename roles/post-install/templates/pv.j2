@@ -13,6 +13,6 @@
         "path": "/srv/nfs/user-vols/{{ volume }}",
         "server": "support1.${GUID}.internal"
     },
-    "persistentVolumeReclaimPolicy": "Retain"
+    "persistentVolumeReclaimPolicy": "{{ reclaimPolicy }}"
   }
 }

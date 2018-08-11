@@ -26,23 +26,27 @@
     mode: 0777
   with_sequence: start=1 end=50
   when: "'nfs' in group_names"
+  tags: create-pv-dir
 
 - name: configure exports
   shell: echo /srv/nfs/user-vols/pv{{ item }} >> /etc/exports.d/openshift-uservols.exports
   with_sequence: start=1 end=50
   when: "'nfs' in group_names"
+  tags: configure-exports
 
 - name: create dir for pv files
   file:
     dest: ./pvs
     state: directory
   when: "inventory_hostname == 'localhost'"
+  tags: create-pv-yaml-dir
     
 - name: Create pv yaml - RWO
   vars:
     volsize: '5Gi'
     volume: 'pv{{ item }}'
     mode: 'ReadWriteOnce'
+    reclaimPolicy: 'Recycle'
   template: src=pv.j2 dest=./pvs/{{ volume }}
   with_sequence: start=1 end=25
   when: "inventory_hostname == 'localhost'"
@@ -52,6 +56,7 @@
     volsize: '10Gi'
     volume: 'pv{{ item }}'
     mode: 'ReadWriteMany'
+    reclaimPolicy: 'Retain'
   template: src=pv.j2 dest=./pvs/{{ volume }}
   with_sequence: start=26 end=50
   when: "inventory_hostname == 'localhost'"
@@ -64,3 +69,10 @@
   shell: oc get pv
   when: "inventory_hostname == 'localhost'"
 
+- name: Fix NFS Persistence
+  shell: "{{ item }}"
+  with_items:
+    - "docker pull registry.access.redhat.com/openshift3/ose-recycler:latest"
+    - "docker tag registry.access.redhat.com/openshift3/ose-recycler:latest registry.access.redhat.com/openshift3/ose-recycler:v3.9.30"
+  when: "'nodes' in group_names"
+  tags: pull-recycler

@@ -19,4 +19,8 @@
   hosts: all,localhost
   roles:
     - post-install
+- name: Smoke Test
+  hosts: localhost
+  roles:
+    - smoke-test
 

@@ -1,0 +1,3 @@
+---
+- name: Smoke Test
+  script: deploy-nodejs-mongodb-persistent.sh
