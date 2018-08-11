@@ -11,7 +11,7 @@
     "accessModes": [ "{{ mode }}" ],
     "nfs": {
         "path": "/srv/nfs/user-vols/{{ volume }}",
-        "server": "support1.${GUID}.internal"
+        "server": "support1.{{ GUID }}.internal"
     },
     "persistentVolumeReclaimPolicy": "{{ reclaimPolicy }}"
   }
