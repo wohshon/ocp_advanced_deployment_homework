@@ -15,7 +15,7 @@
     url: "{{ url.stdout }}"
     status_code: 200
   register: result
-  until: result == 200
+  until: result.status == 200
   retries: 120
   delay: 2 
 

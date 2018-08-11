@@ -3,7 +3,7 @@
   script: deploy-jenkins-persistent.sh
 
 - name: Test URL
-  shell: echo http://$(sudo oc get route | awk 'NR>1 {print $2}')  
+  shell: echo https://$(sudo oc get route | awk 'NR>1 {print $2}')  
   register: url
 
 - name: debug 
@@ -13,14 +13,15 @@
 - name: "wait for pod to come up"
   uri:
     url: "{{ url.stdout }}"
-    status_code: 200
+    status_code: 403
+    validate_certs: no
   register: result
-  until: result == 200
+  until: result.status == 403
   retries: 120
   delay: 2 
 
 - name: Jenkins Deployed
   debug:
     msg: "***JENKINS DEPLOYED***"
-  when: result.status == 200
+  when: result.status == 403
 
