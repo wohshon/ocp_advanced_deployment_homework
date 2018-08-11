@@ -1,6 +1,6 @@
 ---
-- name: Smoke Test
-  script: deploy-nodejs-mongodb-persistent.sh
+- name: Deploy Jenkins
+  script: deploy-jenkins-persistent.sh
 
 - name: Test URL
   shell: echo http://$(sudo oc get route | awk 'NR>1 {print $2}')  
@@ -8,7 +8,7 @@
 
 - name: debug 
   debug:
-    msg: "{{ url.stdout }}"
+    msg: " Jenkins URL: {{ url.stdout }}"
 
 - name: "wait for pod to come up"
   uri:
@@ -19,8 +19,8 @@
   retries: 120
   delay: 2 
 
-- name: Smoke Test Passed
+- name: Jenkins Deployed
   debug:
-    msg: "***SMOKE TEST PASSED***"
+    msg: "***JENKINS DEPLOYED***"
   when: result.status == 200
 
