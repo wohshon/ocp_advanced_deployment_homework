@@ -17,4 +17,10 @@
   register: result
   until: result.status == 200
   retries: 120
-  delay: 1
+  delay: 2 
+
+- name: Smoke Test Passed
+  debug:
+    msg: "***SMOKE TEST PASSED***"
+  when: result.status == 200
+
