@@ -1,0 +1,8 @@
+node {
+
+  stage 'Git checkout'
+  echo 'Checking out repo'
+
+  stage 'Deploy in Development'
+  echo ' Deploy apps in development'
+}
