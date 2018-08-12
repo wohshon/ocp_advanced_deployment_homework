@@ -69,6 +69,11 @@
   shell: oc get pv
   when: "inventory_hostname == 'localhost'"
 
+- name: Create Admin User
+  script: create-users.sh
+  when: "'masters' in group_names"
+
+
 - name: Fix NFS Persistence
   shell: "{{ item }}"
   with_items:
