@@ -1,0 +1,5 @@
+APPLICATION_NAME=openshift-tasks
+#NAMESPACE=basic-spring-boot-build
+NAMESPACE=cicd
+SOURCE_REPOSITORY_URL=https://github.com/wohshon/container-pipelines.git
+SOURCE_REPOSITORY_REF=master

@@ -1,0 +1,22 @@
+openshift_cluster_content:
+- object: projects
+  content:
+  - name: "create environments"
+    file: "../../roles/prepare-app-deployment/files/projects/projects.yml"
+    action: create
+- object: deployments
+  content:
+  - name: "deploy dev environment"
+    template: "../../roles/prepare-app-deployment/files/templates/deployment.yml"
+    params: "../../roles/prepare-app-deployment/files/params/deployment-dev"
+  - name: "deply stage environment"
+    template: "../../roles/prepare-app-deployment/files/templates/deployment.yml"
+    params: "../../roles/prepare-app-deployment/files/params/deployment-stage"
+  - name: "deply prod environment"
+    template: "../../roles/prepare-app-deployment/files/templates/deployment.yml"
+    params: "../../roles/prepare-app-deployment/files/params/deployment-prod"
+- object: builds
+  content:
+  - name: "deploy build pipeline to dev"
+    template: "../../roles/prepare-app-deployment/files/templates/build.yml"
+    params: "../../roles/prepare-app-deployment/files/params/build-dev"
