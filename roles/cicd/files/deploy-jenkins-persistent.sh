@@ -1,5 +1,5 @@
 #!/bin/bash
 sudo oc login -u system:admin
-oc new-project cicd
-oc new-app jenkins-persistent
+sudo oc new-project cicd
+sudo oc new-app jenkins-persistent
 

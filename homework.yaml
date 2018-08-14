@@ -30,3 +30,12 @@
   roles:
     - cicd
 
+- name: test
+  hosts: localhost
+  roles:
+    - prepare-app-deployment
+
+- name: run applier for spring rest
+  hosts: localhost
+  roles:
+    - openshift-applier
