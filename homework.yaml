@@ -7,17 +7,7 @@
 - name: Prepare Environment Play
   hosts: all
   roles:
-    - common-prep
-
-- name: Verify Docker on nodes
-  hosts: nodes
-  roles:
-    - docker-prep
-
-- name: Verify NFS
-  hosts: nfs
-  roles:
-    - nfs-prep
+    - prep-env
 
 - name: install pre-req
   import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml"
@@ -25,12 +15,18 @@
 - name: install ansible
   import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml"
 
-- name: Post Install Verification
+- name: Post Install
+  hosts: all,localhost
+  roles:
+    - post-install
+
+- name: Smoke Test
   hosts: localhost
   roles:
-    - post-install-verify
+    - smoke-test
 
-- name: Post Install Configuration
-  hosts: nfs
+- name: Deploy Jenkins
+  hosts: localhost
   roles:
-    - post-install-config
+    - cicd
+

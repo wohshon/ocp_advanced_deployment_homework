@@ -1,0 +1,11 @@
+---
+- name: test
+  hosts: localhost
+  roles:
+    - prepare-app-deployment
+
+- name: run applier for spring rest
+ # import_playbook: "./openshift-applier/playbooks/openshift-cluster-seed.yml"
+  hosts: localhost
+  roles:
+    - openshift-applier
