@@ -36,7 +36,7 @@
 
 - name: create dir for pv files
   file:
-    dest: ./pvs
+    dest: ./applier/pvs
     state: directory
   when: "inventory_hostname == 'localhost'"
   tags: create-pv-yaml-dir
@@ -47,7 +47,7 @@
     volume: 'pv{{ item }}'
     mode: 'ReadWriteOnce'
     reclaimPolicy: 'Recycle'
-  template: src=pv.j2 dest=./pvs/{{ volume }}
+  template: src=pv.j2 dest=./applier/pvs/{{ volume }}.yml
   with_sequence: start=1 end=25
   when: "inventory_hostname == 'localhost'"
 
@@ -57,13 +57,35 @@
     volume: 'pv{{ item }}'
     mode: 'ReadWriteMany'
     reclaimPolicy: 'Retain'
-  template: src=pv.j2 dest=./pvs/{{ volume }}
+  template: src=pv.j2 dest=./applier/pvs/{{ volume }}.yml
   with_sequence: start=26 end=50
   when: "inventory_hostname == 'localhost'"
 
-- name: create PVs
-  shell: cat ./pvs/* | oc create -f -
+#NOT USED - SWITCH OVER TO APPLIER
+#- name: create PVs
+#  shell: cat ./pvs/* | oc create -f -
+#  when: "inventory_hostname == 'localhost'"
+
+- name: add localhost to seed-hosts
+  add_host:
+    hostname: localhost
+    groups:
+      - seed-hosts
+    ansible_connection: local
+    ansible_host: localhost
   when: "inventory_hostname == 'localhost'"
+
+- name: load inventory info for PV 
+  include_vars:
+    dir: vars
+    files_matching: seed-hosts.yml
+  when: "inventory_hostname == 'localhost'"
+
+- name: Apply condition to each task in role
+  import_role:
+    name: openshift-applier
+  when: "inventory_hostname == 'localhost'"
+
 
 - name: check pv
   shell: oc get pv

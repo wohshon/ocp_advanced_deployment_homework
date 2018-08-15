@@ -1,4 +1,9 @@
 ---
+- name: test-post-install
+  hosts: localhost
+  roles:
+    - test-post-install
+
 - name: test
   hosts: localhost
   roles:

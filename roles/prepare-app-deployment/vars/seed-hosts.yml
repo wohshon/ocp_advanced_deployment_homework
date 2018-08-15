@@ -2,21 +2,21 @@ openshift_cluster_content:
 - object: projects
   content:
   - name: "create environments"
-    file: "{{role_path}}/files/projects/projects.yml"
+    file: "{{role_path}}/../../applier/projects/projects.yml"
     action: create
 - object: deployments
   content:
   - name: "deploy dev environment"
-    template: "{{role_path}}/files/templates/deployment.yml"
-    params: "{{role_path}}/files/params/deployment-dev"
+    template: "{{role_path}}/../../applier/templates/deployment.yml"
+    params: "{{role_path}}/../../applier/params/deployment-dev"
   - name: "deply stage environment"
-    template: "{{role_path}}/files/templates/deployment.yml"
-    params: "{{role_path}}/files/params/deployment-stage"
+    template: "{{role_path}}/../../applier/templates/deployment.yml"
+    params: "{{role_path}}/../../applier/params/deployment-stage"
   - name: "deply prod environment"
-    template: "{{role_path}}/files/templates/deployment.yml"
-    params: "{{role_path}}/files/params/deployment-prod"
+    template: "{{role_path}}/../../applier/templates/deployment.yml"
+    params: "{{role_path}}/../../applier/params/deployment-prod"
 - object: builds
   content:
   - name: "deploy build pipeline to dev"
-    template: "{{role_path}}/files/templates/build.yml"
-    params: "{{role_path}}/files/params/build-dev"
+    template: "{{role_path}}/../../applier/templates/build.yml"
+    params: "{{role_path}}/../../applier/params/build-dev"
