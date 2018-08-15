@@ -23,7 +23,7 @@
   when: "inventory_hostname == 'localhost'"
 
 - name: Test URL
-  shell: echo http://$(sudo oc get route | awk 'NR>1 {print $2}')  
+  shell: echo http://$(sudo oc get route -n smoke-test | awk 'NR>1 {print $2}')  
   register: url
 
 - name: debug 

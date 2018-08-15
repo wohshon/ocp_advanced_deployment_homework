@@ -24,7 +24,7 @@
 
 
 - name: Test URL
-  shell: echo https://$(sudo oc get route | awk 'NR>1 {print $2}')  
+  shell: echo https://$(sudo oc get route -n cicd | awk 'NR>1 {print $2}')  
   register: url
 
 - name: debug 
