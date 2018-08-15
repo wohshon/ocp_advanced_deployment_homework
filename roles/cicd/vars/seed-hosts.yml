@@ -1,0 +1,12 @@
+openshift_cluster_content:
+- object: project
+  content:
+  - name: "create cicd project"
+    file: "{{role_path}}/../../applier/cicd/projects/projects.yml"
+    action: create
+- object: deployments
+  content:
+  - name: "deploy jenkins"
+    template: "{{role_path}}/../../applier/cicd/templates/deployment.yml"
+    params: "{{role_path}}/../../applier/cicd/params/jenkins.env"
+

@@ -1,6 +1,26 @@
 ---
-- name: Smoke Test
-  script: deploy-nodejs-mongodb-persistent.sh
+#- name: Smoke Test
+#  script: deploy-nodejs-mongodb-persistent.sh
+
+- name: add localhost to seed-hosts
+  add_host:
+    hostname: localhost
+    groups:
+      - seed-hosts
+    ansible_connection: local
+    ansible_host: localhost
+  when: "inventory_hostname == 'localhost'"
+
+- name: load inventory info for smoke test
+  include_vars:
+    dir: vars
+    files_matching: seed-hosts.yml
+  when: "inventory_hostname == 'localhost'"
+
+- name: Deploy smoke test app using applier
+  import_role:
+    name: openshift-applier
+  when: "inventory_hostname == 'localhost'"
 
 - name: Test URL
   shell: echo http://$(sudo oc get route | awk 'NR>1 {print $2}')  

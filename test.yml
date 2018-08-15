@@ -2,15 +2,15 @@
 - name: test-post-install
   hosts: localhost
   roles:
-    - test-post-install
+    - smoke-test
 
-- name: test
-  hosts: localhost
-  roles:
-    - prepare-app-deployment
+#- name: Prepare App Development
+#  hosts: localhost
+#  roles:
+#    - prepare-app-deployment
 
-- name: run applier for spring rest
- # import_playbook: "./openshift-applier/playbooks/openshift-cluster-seed.yml"
-  hosts: localhost
-  roles:
-    - openshift-applier
+#- name: Deploy OpenShift Tasks Project
+#  hosts: localhost
+#  roles:
+#    - openshift-applier
+

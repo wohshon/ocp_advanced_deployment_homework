@@ -1,6 +1,27 @@
 ---
-- name: Deploy Jenkins
-  script: deploy-jenkins-persistent.sh
+#- name: Deploy Jenkins
+#  script: deploy-jenkins-persistent.sh
+
+- name: add localhost to seed-hosts
+  add_host:
+    hostname: localhost
+    groups:
+      - seed-hosts
+    ansible_connection: local
+    ansible_host: localhost
+  when: "inventory_hostname == 'localhost'"
+
+- name: load inventory info for Jenkins 
+  include_vars:
+    dir: vars
+    files_matching: seed-hosts.yml
+  when: "inventory_hostname == 'localhost'"
+
+- name: Deploy Jenkins using applier
+  import_role:
+    name: openshift-applier
+  when: "inventory_hostname == 'localhost'"
+
 
 - name: Test URL
   shell: echo https://$(sudo oc get route | awk 'NR>1 {print $2}')  
