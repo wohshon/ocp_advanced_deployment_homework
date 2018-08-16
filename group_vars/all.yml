@@ -1,0 +1,6 @@
+---
+tasks_dev_namespace: tasks-dev
+tasks_stage_namespace: tasks-stage
+tasks_prod_namespace: tasks-prod
+cicd_namespace: cicd
+
