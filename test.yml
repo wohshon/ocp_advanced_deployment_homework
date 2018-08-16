@@ -1,16 +1,21 @@
 ---
-- name: test-post-install
+- name: Smoke Test
   hosts: localhost
   roles:
     - smoke-test
 
-#- name: Prepare App Development
-#  hosts: localhost
-#  roles:
-#    - prepare-app-deployment
+- name: Deploy Jenkins
+  hosts: localhost
+  roles:
+    - cicd
 
-#- name: Deploy OpenShift Tasks Project
-#  hosts: localhost
-#  roles:
-#    - openshift-applier
+- name: Prepare App Development
+  hosts: localhost
+  roles:
+    - prepare-app-deployment
+
+- name: Deploy OpenShift Tasks Project
+  hosts: localhost
+  roles:
+    - openshift-applier
 

@@ -4,6 +4,17 @@ openshift_cluster_content:
   - name: "create environments"
     file: "{{role_path}}/../../applier/projects/projects.yml"
     action: create
+- object: limitrange
+  content:
+  - name: "create limitrange"
+    file: "{{role_path}}/../../applier/limitrange/limitrange.yml"
+    action: create
+- object: hpa
+  content:
+  - name: "create hpa"
+    file: "{{role_path}}/../../applier/hpa/hpa.yml"
+    action: create
+
 - object: deployments
   content:
   - name: "deploy dev environment"

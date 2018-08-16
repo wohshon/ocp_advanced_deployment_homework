@@ -18,6 +18,11 @@
     dir: vars
     files_matching: seed-hosts.yml
 
+- name: Apply condition to each task in role
+  import_role:
+    name: openshift-applier
+  when: "inventory_hostname == 'localhost'"
+
 #- name: test1
 #  debug:
 #    msg: "Testing : {{testvar}}"

@@ -30,12 +30,7 @@
   roles:
     - cicd
 
-- name: Prepare App Development
-  hosts: localhost
-  roles:
-    - prepare-app-deployment
-
 - name: Deploy OpenShift Tasks Project
   hosts: localhost
   roles:
-    - openshift-applier
+    - deploy-app
