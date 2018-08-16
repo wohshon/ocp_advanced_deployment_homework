@@ -4,7 +4,6 @@ items:
   kind: LimitRange
   metadata:
     name: limits
-    namespace: ${NAMESPACE}
   spec:
     limits:
     - max:

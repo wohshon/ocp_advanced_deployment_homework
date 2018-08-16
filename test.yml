@@ -1,21 +1,7 @@
 ---
-- name: Smoke Test
-  hosts: localhost
-  roles:
-    - smoke-test
-
-- name: Deploy Jenkins
-  hosts: localhost
-  roles:
-    - cicd
-
 - name: Prepare App Development
   hosts: localhost
   roles:
-    - prepare-app-deployment
+    - deploy-app
 
-- name: Deploy OpenShift Tasks Project
-  hosts: localhost
-  roles:
-    - openshift-applier
 

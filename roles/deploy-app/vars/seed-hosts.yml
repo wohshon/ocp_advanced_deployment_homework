@@ -8,12 +8,37 @@ openshift_cluster_content:
   content:
   - name: "create limitrange"
     file: "{{role_path}}/../../applier/limitrange/limitrange.yml"
+    params: "{{role_path}}/../../applier/params/deployment-dev"
     action: create
+    namespace: tasks-dev
+  - name: "create limitrange stage"
+    file: "{{role_path}}/../../applier/limitrange/limitrange.yml"
+    params: "{{role_path}}/../../applier/params/deployment-stage"
+    action: create
+    namespace: tasks-stage
+  - name: "create limitrange prod"
+    file: "{{role_path}}/../../applier/limitrange/limitrange.yml"
+    params: "{{role_path}}/../../applier/params/deployment-prod"
+    action: create
+    namespace: tasks-prod
+
 - object: hpa
   content:
   - name: "create hpa"
     file: "{{role_path}}/../../applier/hpa/hpa.yml"
+    params: "{{role_path}}/../../applier/params/deployment-dev"
     action: create
+    namespace: tasks-dev
+  - name: "create hpa stage"
+    file: "{{role_path}}/../../applier/hpa/hpa.yml"
+    params: "{{role_path}}/../../applier/params/deployment-stage"
+    action: create
+    namespace: tasks-stage
+  - name: "create hpa prod "
+    file: "{{role_path}}/../../applier/hpa/hpa.yml"
+    params: "{{role_path}}/../../applier/params/deployment-prod"
+    action: create
+    namespace: tasks-prod
 
 - object: deployments
   content:

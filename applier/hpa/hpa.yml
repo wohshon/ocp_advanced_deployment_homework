@@ -1,7 +1,6 @@
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-  namespace: ${NAMESPACE}
   annotations:
     autoscaling.alpha.kubernetes.io/conditions: '[{"type":"AbleToScale","status":"True","lastTransitionTime":"2018-08-16T01:04:54Z","reason":"SucceededGetScale","message":"the
       HPA controller was able to get the target''s current scale"},{"type":"ScalingActive","status":"False","lastTransitionTime":"2018-08-16T01:04:54Z","reason":"FailedGetResourceMetric","message":"the
