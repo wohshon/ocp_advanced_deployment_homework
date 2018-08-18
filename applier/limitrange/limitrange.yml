@@ -7,24 +7,24 @@ items:
   spec:
     limits:
     - max:
-        cpu: 150m
-        memory: 750Mi
+        cpu: 1000m
+        memory: 1000Mi
       min:
-        cpu: 50m
-        memory: 10Mi
+        cpu: 250m
+        memory: 500Mi
       type: Pod
     - default:
-        cpu: 100m
-        memory: 100Mi
-      defaultRequest:
-        cpu: 100m
-        memory: 100Mi
-      max:
-        cpu: 150m
+        cpu: 750m
         memory: 750Mi
+      defaultRequest:
+        cpu: 750m
+        memory: 750Mi
+      max:
+        cpu: 1000m
+        memory: 1000Mi
       min:
-        cpu: 50m
-        memory: 10Mi
+        cpu: 250m
+        memory: 500Mi
       type: Container
 kind: List
 metadata:
