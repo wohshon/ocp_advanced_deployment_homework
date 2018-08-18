@@ -8,13 +8,13 @@ metadata:
       openshift-tasks in pod tasks-dev/openshift-tasks-1-fc2nw"}]'
   name: openshift-tasks
 spec:
-  maxReplicas: 5
+  maxReplicas: 3
   minReplicas: 1
   scaleTargetRef:
     apiVersion: apps.openshift.io/v1
     kind: DeploymentConfig
     name: openshift-tasks
-  targetCPUUtilizationPercentage: 80
+  targetCPUUtilizationPercentage: 90
 status:
   currentReplicas: 1
   desiredReplicas: 0
