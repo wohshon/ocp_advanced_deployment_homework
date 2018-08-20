@@ -22,6 +22,9 @@
     name: openshift-applier
   when: "inventory_hostname == 'localhost'"
 
+- name: label default project to allow network policy
+  shell: "oc label namespace cicd name=cicd"
+  when: "inventory_hostname == 'localhost'"
 
 - name: Test URL
   shell: echo https://$(sudo oc get route -n cicd | awk 'NR>1 {print $2}')  

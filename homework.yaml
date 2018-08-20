@@ -36,7 +36,7 @@
     - deploy-app
 
 - name: Prepare cluster for Multitenant project setup
-  hosts: masters
+  hosts: masters,localhost
   roles:
     - multitenant
 

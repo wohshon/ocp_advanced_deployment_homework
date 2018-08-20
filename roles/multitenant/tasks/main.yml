@@ -1,4 +1,8 @@
 ---
+- name: label default project to allow network policy
+  shell: "oc label namespace default name=default"
+  when: "inventory_hostname == 'localhost'"
+
 - name: add localhost to seed-hosts
   add_host:
     hostname: localhost

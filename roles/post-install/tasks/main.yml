@@ -103,3 +103,4 @@
     - "docker tag registry.access.redhat.com/openshift3/ose-recycler:latest registry.access.redhat.com/openshift3/ose-recycler:v3.9.30"
   when: "'nodes' in group_names"
   tags: pull-recycler
+
