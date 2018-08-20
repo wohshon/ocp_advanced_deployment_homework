@@ -51,8 +51,8 @@ objects:
           cpu: 10m
           memory: 5Mi
         default: 
-          cpu: 100m
-          memory: 100Mi
+          cpu: 250m
+          memory: 500Mi
 - apiVersion: v1
   groupNames: []
   kind: RoleBinding
