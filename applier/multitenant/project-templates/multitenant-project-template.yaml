@@ -39,18 +39,6 @@ objects:
       - namespaceSelector:
           matchLabels:
             name: default
-- apiVersion: networking.k8s.io/v1
-  kind: NetworkPolicy
-  metadata:
-    name: allow-from-cicd-namespace
-    namespace: ${PROJECT_NAME}
-  spec:
-    podSelector:
-    ingress:
-    - from:
-      - namespaceSelector:
-          matchLabels:
-            name: cicd
 - apiVersion: v1
   kind: ResourceQuota
   metadata: 
