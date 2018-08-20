@@ -21,6 +21,7 @@ objects:
   kind: NetworkPolicy
   metadata:
     name: allow-same-namespace
+    namespace: ${PROJECT_NAME}
   spec:
     podSelector:
     ingress:
@@ -30,6 +31,7 @@ objects:
   kind: ResourceQuota
   metadata: 
     name: ${PROJECT_NAME}-quota
+    namespace: ${PROJECT_NAME}
   spec: 
     hard: 
       memory: 1024Mi
@@ -41,6 +43,7 @@ objects:
   metadata: 
     name: ${PROJECT_NAME}-limits
     creationTimestamp: null
+    namespace: ${PROJECT_NAME}
   spec: 
     limits: 
       - 
