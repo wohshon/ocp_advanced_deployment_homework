@@ -11,6 +11,8 @@ objects:
     annotations:
       openshift.io/description: ${PROJECT_DESCRIPTION}
       openshift.io/display-name: ${PROJECT_DISPLAYNAME}
+      scheduler.alpha.kubernetes.io/node-selector: ${CLIENT_NODE_SELECTOR}
+      openshift.io/node-selector: ${CLIENT_NODE_SELECTOR} 
     creationTimestamp: null
     name: ${PROJECT_NAME}
   spec: {}
@@ -123,4 +125,4 @@ parameters:
 - name: PROJECT_DESCRIPTION
 - name: PROJECT_ADMIN_USER
 - name: GROUP_USER
-
+- name: CLIENT_NODE_SELECTOR
