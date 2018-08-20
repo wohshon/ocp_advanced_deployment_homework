@@ -34,3 +34,9 @@
   hosts: localhost
   roles:
     - deploy-app
+
+- name: Prepare cluster for Multitenant project setup
+  hosts: masters
+  roles:
+    - multitenant
+
