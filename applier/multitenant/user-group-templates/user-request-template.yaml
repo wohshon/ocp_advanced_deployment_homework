@@ -14,9 +14,10 @@ objects:
   metadata:
     creationTimestamp: null
     labels:
-      ${CLIENT_LABEL}
+      ${CLIENT_LABEL_KEY}:${CLIENT_LABEL_VALUE}
     name: ${USER_NAME}
 parameters:
 - name: USER_NAME
-- name: CLIENT_LABEL
+- name: CLIENT_LABEL_KEY
+- name: CLIENT_LABEL_VALUE
 - name: GROUP_NAME

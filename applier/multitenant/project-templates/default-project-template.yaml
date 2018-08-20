@@ -15,6 +15,15 @@ objects:
     name: ${PROJECT_NAME}
   spec: {}
   status: {}
+- apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+    name: allow-same-namespace
+  spec:
+    podSelector:
+    ingress:
+    - from:
+      - podSelector: {}
 - apiVersion: v1
   kind: ResourceQuota
   metadata: 
