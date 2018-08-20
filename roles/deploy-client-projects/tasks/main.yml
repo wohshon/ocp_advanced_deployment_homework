@@ -1,0 +1,30 @@
+---
+- name: create alpha client
+  script: onboard-alpha-client.sh
+  when: "inventory_hostname == 'localhost'"
+
+- name: deploy alpha app
+  script: deploy-alpha-app.sh
+  when: "inventory_hostname == 'localhost'"
+
+- name: create beta client
+  script: onboard-beta-client.sh
+  when: "inventory_hostname == 'localhost'"
+
+- name: deploy beta app
+  script: deploy-beta-app.sh
+  when: "inventory_hostname == 'localhost'"
+
+- name: create charlie client
+  script: onboard-charlie-client.sh
+  when: "inventory_hostname == 'localhost'"
+
+- name: deploy charlie app
+  script: deploy-charlie-app.sh
+  when: "inventory_hostname == 'localhost'"
+
+
+- name: Create Users in identity provider
+  script: add-identity-provider.sh
+  when: "'masters' in group_names"
+
