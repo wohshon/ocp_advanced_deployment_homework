@@ -33,7 +33,7 @@
 - name: Deploy OpenShift Tasks Project
   hosts: localhost
   roles:
-    - deploy-app
+    - deploy-tasks-app
 
 - name: Prepare cluster for Multitenant project setup
   hosts: masters,localhost
