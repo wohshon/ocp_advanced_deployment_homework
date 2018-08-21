@@ -40,3 +40,8 @@
   roles:
     - multitenant
 
+- name: Prepare cluster for Multitenant project setup
+  hosts: masters,localhost
+  roles:
+    - deploy-client-projects
+
