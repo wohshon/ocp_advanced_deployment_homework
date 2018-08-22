@@ -1,5 +1,5 @@
 ---
-- name: Check system:admin role
+- name: Copy config file from masters
   fetch:
     src: /root/.kube/config
     dest: /root/.kube/config

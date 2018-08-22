@@ -12,7 +12,7 @@
 - name: install pre-req
   import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml"
 
-- name: install ansible
+- name: install ocp
   import_playbook: "/usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml"
 
 - name: Post Install
@@ -40,7 +40,7 @@
   roles:
     - multitenant
 
-- name: Prepare cluster for Multitenant project setup
+- name: On Board users groups projects and applications
   hosts: masters,localhost
   roles:
     - deploy-client-projects
