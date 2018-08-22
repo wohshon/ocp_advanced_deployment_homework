@@ -27,7 +27,7 @@
   debug:
     msg: " Jenkins URL: {{ url.stdout }}"
 
-- name: "wait for pod to come up"
+- name: "wait for pod to be alive"
   uri:
     url: "{{ url.stdout }}"
     status_code: 403
