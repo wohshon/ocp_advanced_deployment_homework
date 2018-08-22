@@ -1,7 +1,4 @@
 ---
-#- name: Deploy Jenkins
-#  script: deploy-jenkins-persistent.sh
-
 - name: add localhost to seed-hosts
   add_host:
     hostname: localhost
@@ -20,10 +17,6 @@
 - name: Deploy Jenkins using applier
   import_role:
     name: openshift-applier
-  when: "inventory_hostname == 'localhost'"
-
-- name: label default project to allow network policy
-  shell: "oc label namespace cicd name=cicd"
   when: "inventory_hostname == 'localhost'"
 
 - name: Test URL
