@@ -1,26 +1,22 @@
 ---
-- name: create alpha client
-  script: onboard-alpha-client.sh
+- name: add localhost to seed-hosts
+  add_host:
+    hostname: localhost
+    groups:
+      - seed-hosts
+    ansible_connection: local
+    ansible_host: localhost
   when: "inventory_hostname == 'localhost'"
 
-- name: deploy alpha app
-  script: deploy-alpha-app.sh
+- name: load inventory info for client projects 
+  include_vars:
+    dir: vars
+    files_matching: seed-hosts.yml
   when: "inventory_hostname == 'localhost'"
 
-- name: create beta client
-  script: onboard-beta-client.sh
-  when: "inventory_hostname == 'localhost'"
-
-- name: deploy beta app
-  script: deploy-beta-app.sh
-  when: "inventory_hostname == 'localhost'"
-
-- name: create charlie client
-  script: onboard-charlie-client.sh
-  when: "inventory_hostname == 'localhost'"
-
-- name: deploy charlie app
-  script: deploy-charlie-app.sh
+- name: Apply condition to each task in role
+  import_role:
+    name: openshift-applier
   when: "inventory_hostname == 'localhost'"
 
 

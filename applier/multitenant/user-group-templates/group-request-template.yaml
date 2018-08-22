@@ -10,7 +10,8 @@ objects:
   metadata:
     creationTimestamp: null
     name: ${GROUP_NAME}
-  users: null
+  users: ${{GROUP_USERS}}
 parameters:
 - name: GROUP_NAME
-
+- name: GROUP_USERS
+  value: "[]"
