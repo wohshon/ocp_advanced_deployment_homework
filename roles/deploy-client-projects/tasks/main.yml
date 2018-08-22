@@ -14,7 +14,7 @@
     files_matching: seed-hosts.yml
   when: "inventory_hostname == 'localhost'"
 
-- name: Apply condition to each task in role
+- name: Create projects and groups and users
   import_role:
     name: openshift-applier
   when: "inventory_hostname == 'localhost'"
