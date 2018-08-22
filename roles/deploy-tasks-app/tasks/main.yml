@@ -1,5 +1,5 @@
 ---
-- name: add a host
+- name: add localhost to seed-hosts
   add_host:
     hostname: localhost
     groups:
@@ -7,12 +7,12 @@
     ansible_connection: local
     ansible_host: localhost
 
-- name: Include only files matching bastion.yaml (2.2)
+- name: load inventory info from seed-hosts
   include_vars:
     dir: vars
     files_matching: seed-hosts.yml
 
-- name: Apply condition to each task in role
+- name: Deploy application and objects
   import_role:
     name: openshift-applier
   when: "inventory_hostname == 'localhost'"
