@@ -1,8 +1,0 @@
-kind: "BuildConfig"
-apiVersion: "v1"
-metadata:
-  name: "openshift-tasks-pipeline"
-spec:
-  strategy:
-    jenkinsPipelineStrategy:
-      jenkinsfile: "node('') {\nstage 'build'\nopenshiftBuild(buildConfig: 'ruby-sample-build', showBuildLogs: 'true')\nstage 'deploy'\nopenshiftDeploy(deploymentConfig: 'frontend')\n}"
