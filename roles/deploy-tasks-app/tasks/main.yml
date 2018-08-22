@@ -1,9 +1,4 @@
 ---
-
-- name: Test
-  debug:
-    msg: "TESTING 123 {{ role_path}}"
-
 - name: add a host
   add_host:
     hostname: localhost
@@ -11,7 +6,6 @@
       - seed-hosts
     ansible_connection: local
     ansible_host: localhost
-#    inventory_dir: "container-pipelines/basic-spring-boot/applier/inventory"
 
 - name: Include only files matching bastion.yaml (2.2)
   include_vars:
@@ -23,8 +17,3 @@
     name: openshift-applier
   when: "inventory_hostname == 'localhost'"
 
-#- name: test1
-#  debug:
-#    msg: "Testing : {{testvar}}"
-#- name: create pipeline
-#  script: create_pipeline.sh
