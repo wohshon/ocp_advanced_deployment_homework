@@ -20,7 +20,16 @@
 	# ./run.sh
  
 
+The `homework.yaml` ansible playbook will be invoked to run the following tasks:
 
+* Prepare the environment
+* Prepare the inventory hosts
+* install the cluster (native ha with metrics, logging components installed)
+* Runs post-install tasks: Create Persistent Volumes etc
+* Deploy smoke-test application
+* Create pipeline and deploy OpenShift Tasks into 3 environments
+* Configure multi-tenant: podNodeSelectorPlugin, new project, group and user  templates
+* Deploy 3 clients projects with applications to show pods are running on the right nodes
 
 
 
