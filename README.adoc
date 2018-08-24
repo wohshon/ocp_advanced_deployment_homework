@@ -1,4 +1,4 @@
-= OpenShift Container Platform - Advanced Deployment - Homework Template
+= OpenShift Container Platform - Advanced Deployment - Homework Submission
 
 
 1. Login to the bastion host of the homework environment
