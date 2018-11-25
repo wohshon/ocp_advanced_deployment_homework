@@ -25,23 +25,23 @@
   roles:
     - smoke-test
 
-- name: Deploy Jenkins
-  hosts: localhost
-  roles:
-    - cicd
+#- name: Deploy Jenkins
+#  hosts: localhost
+#  roles:
+#    - cicd
 
-- name: Deploy OpenShift Tasks Project
-  hosts: localhost
-  roles:
-    - deploy-tasks-app
+#- name: Deploy OpenShift Tasks Project
+#  hosts: localhost
+#  roles:
+#    - deploy-tasks-app
 
-- name: Prepare cluster for Multitenant project setup
-  hosts: masters,localhost
-  roles:
-    - multitenant
+#- name: Prepare cluster for Multitenant project setup
+#  hosts: masters,localhost
+#  roles:
+#    - multitenant
 
-- name: On Board users groups projects and applications
-  hosts: masters,localhost
-  roles:
-    - deploy-client-projects
+#- name: On Board users groups projects and applications
+#  hosts: masters,localhost
+#  roles:
+#    - deploy-client-projects
 
